@@ -40,3 +40,14 @@ console.log(container.caoyao)
 console.log(container[key])  //[]可放字符串和变量
 console.log(container['caoyao'])
 ```
+##### 函数
+```ts
+//arguments
+function add() {
+  let sun = 0
+  for(let i = 0; i < arguments.length; i++) {
+    sum += arguments[i]
+  }
+  return sum
+}
+```
