@@ -19,6 +19,10 @@ let sum = (b = a++ + --a) + a-- + b++
 //b = 1 + 1 = 2
 //sum = 2 + 1 + 2 = 5
 ```
+##### 字符串
+```ts
+'abcabc'.replace('a', 'A')   //'Abcabc'
+```
 ##### 数组
 ```ts
 let arr = new Array()
