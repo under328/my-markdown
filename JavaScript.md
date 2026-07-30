@@ -612,8 +612,6 @@ const userObject = JSON.parse(jsonString);   // result: { name: 'John', age: 30,
 
 #### 装箱拆箱
 
-![image](https://wiki.huawei.com/vision-file-storage/api/file/download/upload-v2/WIKI2026041510777489/42141561/e0bd1783da4749aa987dbc6126250259.png)
-
 ```csharp
 //C# 只针对值类型，引用类型转换不触发装箱拆箱；拆箱是值拷贝，不是直接引用堆内存
 //使用泛型集合（如C#的List<T>或Java的ArrayList<Integer>），避免使用非泛型集合（如ArrayList），因为后者在存储值类型时会强制装箱。
