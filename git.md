@@ -2,7 +2,7 @@
 `master`: 默认开发分支
 `origin`: 默认远程版本库
 
-`Head`: 默认开发分支
+`Head`: 当前开发分支
 `Head^`: Head的父提交
 
 `创建版本库`
@@ -14,30 +14,39 @@
 
 `修改和提交`
 
+`.gitignore`: 忽略文件列表
+
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
 | `git status` | 查看状态 | |
 | `git diff` | 查看变更内容 | |
-| `git add .` | 跟踪所有改动过的文件 | |
-| `git add <file>` | 跟踪指定的文件 | |
+| `git add .` | 跟踪所有改动过的文件 | 工作区 -> 暂存区 |
+| `git add <file>` | 跟踪指定的文件 | 将[未暂存]、[未跟踪]的文件暂存 |
 | `git mv <old> <new>` | 文件改名 | |
 | `git rm <file>` | 删除文件 | |
-| `git rm --cached <file>` | 停止跟踪文件但不删除 | |
-| `git commit -m "commit message"` | 提交所有更新过的文件 | |
+| `git rm --cached <file>` | 停止跟踪文件但不删除 | 或者将文件名添加到`.gitignore`文件中|
+| `git commit -m "commit message"` | 提交所有更新过的文件 | `-am`暂存区 -> 本地仓库|
 | `git commit --amend` | 修改最后一次提交 | |
 
 `查看历史提交`
 
+- --all 显示所有分支
+- --oneline 以简洁的方式显示提交历史
+- --graph 以图形化的方式显示提交历史
+- --decorate 显示分支和标签信息
+
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
-| `git log` | 查看提交历史 | |
+| `git log <options>` | 查看提交历史 | |
 | `git log -p <file>` | 查看指定文件的提交历史 | |
+| `git reflog` | 查看历史操作记录 | 查看已经删除的记录 |
 | `git blame <file>` | 以列表方式查看指定文件的提交历史 | |
 
 `撤销`
 
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
+| `git reset --hard commitID` | 版本切换 | |
 | `git reset --hard HEAD` | 撤销工作目录中所有未提交文件的修改内容 | |
 | `git checkout HEAD <file>` | 撤销指定的未提交文件的修改内容 | |
 | `git revert <commit>` | 撤销指定的提交 | |
@@ -47,18 +56,19 @@
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
 | `git branch` | 显示所有本地分支 | |
+| `git checkout -b <branch>` | 创建并切换到指定分支 | |
 | `git checkout <branch/tag>` | 切换到指定分支或标签 | |
 | `git branch <new-branch>` | 创建新分支 | |
 | `git branch -d <branch>` | 删除本地分支 | |
 | `git tag` | 列出所有本地标签 | |
 | `git tag <tag name>` | 基于最新提交创建标签 | |
-| `git tag -d <tag name>` | 删除标签 | |
+| `git tag -d <tag name>` | 删除标签 | -D 强制删除 |
 
 `合并与衍合`
 
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
-| `git merge <branch>` | 合并指定分支到当前分支 | |
+| `git merge <branch>` | 合并指定分支到当前分支 | 先切换分支到master再合并 |
 | `git rebase <branch>` | 衍合指定分支到当前分支 | |
 
 `远程操作`
