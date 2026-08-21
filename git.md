@@ -24,7 +24,7 @@
 | `git rm <file>` | 删除文件 | |
 | `git rm --cached <file>` | 停止跟踪文件但不删除 | |
 | `git commit -m "commit message"` | 提交所有更新过的文件 | |
-| `git commit -amend` | 修改最后一次提交 | |
+| `git commit --amend` | 修改最后一次提交 | |
 
 `查看历史提交`
 
