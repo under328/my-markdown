@@ -9,7 +9,7 @@
 
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
-| `git clone <url>` | 克隆远程版本库 | |
+| `git clone <url> <dir name>` | 克隆远程版本库 | 文件夹名称可省略 |
 | `git init` | 初始化本地版本库 | 使当前目录成为一个git仓库 |
 
 `修改和提交`
@@ -56,6 +56,7 @@
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
 | `git branch` | 显示所有本地分支 | |
+| `git branch -vv` | 显示所有本地分支及其上游分支 | 上游分支：远程对应分支|
 | `git checkout -b <branch>` | 创建并切换到指定分支 | |
 | `git checkout <branch/tag>` | 切换到指定分支或标签 | |
 | `git branch <new-branch>` | 创建新分支 | |
@@ -73,14 +74,24 @@
 
 `远程操作`
 
+命令： `git push -f --set-upstream origin master:master` 
+- -f 强制推送，覆盖远程仓库的内容，慎用，慎用，慎用。
+- -u/--set-upstream 设置上游分支，关联本地分支和远程分支；绑定后可直接使用 `git push` 和 `git pull` 命令。
+- master:master 本地分支:远程分支；相同时可省略
+
+`git pull` = `git fetch` + `git merge`，即先从远程仓库获取最新的代码，再将其合并到本地分支。
+
+解决合并冲突：先使用 `git pull` 拉取远程分支代码，若出现冲突，使用 `git status` 查看冲突文件，手动修改冲突文件后，使用 `git commit -am "feat：提交代码"` 提交。
+
 | 命令 | 功能 | 作用 |
 | --- | --- | --- |
+| `git remote` | 查看当前绑定的远程仓库 | |
 | `git remote -v` | 查看远程版本库信息 | |
-| `git remote show <remote>` | 查看指定远程版本库信息 | |
-| `git remote add <remote> <url>` | 添加远程版本库 | |
-| `git fetch <remote>` | 从远程库获取代码 | |
-| `git pull <remote> <branch>` | 下载代码及快速合并 | |
-| `git push <remote> <branch>` | 上传代码及快速合并 | |
+| `git remote show <remote>` | 查看指定远程版本库信息 | <remote>为远程仓库名称，默认为origin |
+| `git remote add <remote> <url>` | 添加远程版本库 | git remote add origin <url>|
+| `git fetch <remote>` | 从远程库获取代码 | 抓取：抓取到本地但`不合并`|
+| `git pull <remote> <branch>` | 下载代码及快速合并 | 拉取：拉取到本地并`合并`|
+| `git push <remote> <branch>` | 上传代码及快速合并 | git push origin master |
 | `git push <remote> :<branch/tag-name>` | 删除远程分支或标签 | |
 | `git push --tags` | 上传所有标签 | |
 
@@ -113,7 +124,7 @@
 - 提交到本地库 ———— git commit -m "feat：提交代码"
 - 创建分支（第一次） ———— git branch -M main
 - 链接仓库（第一次） ———— git remote add origin https://github.com/under328/hollow-knight-pixel.git
-- 关联并提交代码到分支（第一次） ———— git push -u origin main
+- 关联并提交代码到分支（第一次） ———— git push -u origin main/master
 - 提交代码 ———— git push
 #### 克隆项目
 - git clone https://github.com/under328/hollow-knight-pixel.git
